@@ -1,43 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cpu, Code, Shield } from 'lucide-react';
+import { Code } from 'lucide-react';
 
-const skillCategories = [
-  {
-    title: 'Programming Languages',
-    icon: Code,
-    color: 'text-cyan-400 border-cyan-500/20 bg-cyan-500/5',
-    glowColor: 'cyan',
-    skills: [
-      { name: 'Python', level: 75, desc: 'Core scripting, libraries, and basic data analysis' },
-      { name: 'HTML & CSS', level: 75, desc: 'Semantic layouts, Flexbox/Grid, and responsive styling' },
-      { name: 'JavaScript', level: 70, desc: 'DOM manipulation, Event handlers, and ES6+ features' },
-      { name: 'C Programming', level: 60, desc: 'Basic data processing, functions, and pointers' },
-    ],
-  },
-  {
-    title: 'Core Concepts',
-    icon: Cpu,
-    color: 'text-indigo-400 border-indigo-500/20 bg-indigo-500/5',
-    glowColor: 'indigo',
-    skills: [
-      { name: 'Logic Building', level: 85, desc: 'Structuring solutions for conditional problem sets' },
-      { name: 'Problem Solving', level: 80, desc: 'Analyzing parameters and coding optimal resolutions' },
-      { name: 'Data Structures', level: 65, desc: 'Implementation of Arrays, Lists, Stacks, and Queues' },
-    ],
-  },
-  {
-    title: 'Tools & Platforms',
-    icon: Shield,
-    color: 'text-purple-400 border-purple-500/20 bg-purple-500/5',
-    glowColor: 'purple',
-    skills: [
-      { name: 'Git & GitHub', level: 75, desc: 'Commit histories, branch structures, and workspace push' },
-      { name: 'VS Code', level: 85, desc: 'Environment customization, debugging, and terminal operations' },
-      { name: 'Competitive Coding', level: 70, desc: 'Solving puzzles on HackerRank and CodeChef' },
-    ],
-  },
+const skillsData = [
+  // Programming Languages
+  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+  { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
+  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+  { name: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
+  
+  // Tools & Platforms
+  { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+  { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg', invertDark: true },
+  { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
+
+  // Core Concepts (no icon, styled as text pills)
+  { name: 'Data Structures', isText: true, color: 'from-cyan-500 to-blue-500' },
+  { name: 'Logic Building', isText: true, color: 'from-purple-500 to-rose-500' },
+  { name: 'Problem Solving', isText: true, color: 'from-indigo-500 to-purple-500' },
+  { name: 'Competitive Coding', isText: true, color: 'from-emerald-500 to-teal-500' },
 ];
 
 export default function Skills() {
@@ -68,62 +52,59 @@ export default function Skills() {
           </motion.h2>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, catIndex) => {
-            const Icon = category.icon;
-            return (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: catIndex * 0.15 }}
-                className="glass p-8 rounded-2xl flex flex-col h-full hover:border-cyan-500/30 transition-all duration-300"
-              >
-                {/* Category Header */}
-                <div className="flex items-center gap-3 mb-8">
-                  <div className={`p-2.5 rounded-xl border ${category.color}`}>
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white">{category.title}</h3>
-                </div>
+        {/* Floating Animation Cluster */}
+        <div className="relative w-full min-h-[400px] flex items-center justify-center py-10">
+           {/* Center glow */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
+           
+           <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 max-w-4xl relative z-10">
+              {skillsData.map((skill, index) => {
+                // Generate pseudo-random animation values for a natural floating effect
+                const randomDelay = (index % 5) * 0.3;
+                const randomDuration = 3 + (index % 3); 
+                const yOffset = 10 + (index % 10);
 
-                {/* Skill List */}
-                <div className="flex-1 flex flex-col gap-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name} className="flex flex-col">
-                      <div className="flex justify-between items-baseline mb-2">
-                        <span className="text-sm font-semibold text-slate-200">{skill.name}</span>
-                        <span className="text-xs font-mono text-cyan-400">{skill.level}%</span>
-                      </div>
-                      
-                      {/* Progress Bar Container */}
-                      <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden mb-1">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: skillIndex * 0.1 + 0.2 }}
-                          className={`h-full rounded-full bg-gradient-to-r ${
-                            category.glowColor === 'cyan'
-                              ? 'from-cyan-500 to-blue-500'
-                              : category.glowColor === 'indigo'
-                              ? 'from-indigo-500 to-purple-500'
-                              : 'from-purple-500 to-rose-500'
-                          }`}
-                        />
-                      </div>
-                      <span className="text-[11px] text-slate-400 leading-normal">{skill.desc}</span>
-                    </div>
-                  ))}
-                </div>
-
-              </motion.div>
-            );
-          })}
+                return (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                    className="relative group cursor-pointer z-10 hover:z-50"
+                  >
+                    <motion.div
+                      animate={{ y: [0, -yOffset, 0] }}
+                      transition={{ 
+                        repeat: Infinity, 
+                        duration: randomDuration, 
+                        delay: randomDelay, 
+                        ease: "easeInOut" 
+                      }}
+                      whileHover={{ scale: 1.15 }}
+                      className="flex items-center justify-center"
+                    >
+                      {skill.isText ? (
+                        <div className={`px-6 py-3 rounded-full bg-gradient-to-r ${skill.color} text-white font-bold shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-white/20 backdrop-blur-sm`}>
+                          {skill.name}
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-xl h-28 w-28 hover:bg-white/10 transition-colors hover:shadow-[0_0_25px_rgba(6,182,212,0.3)] hover:border-cyan-500/50">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img 
+                            src={skill.icon} 
+                            alt={skill.name} 
+                            className={`w-14 h-14 object-contain mb-2 ${skill.invertDark ? 'invert' : ''}`}
+                          />
+                          <span className="text-xs font-semibold text-slate-300">{skill.name}</span>
+                        </div>
+                      )}
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+           </div>
         </div>
-
       </div>
     </section>
   );

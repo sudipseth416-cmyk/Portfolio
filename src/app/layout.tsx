@@ -19,12 +19,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sudip Seth | Future Data Scientist & AI Enthusiast Portfolio",
+  title: "Sudip Seth | Frontend Developer & AI Enthusiast Portfolio",
   description: "Explore the futuristic developer portfolio of Sudip Seth. Showcasing projects in Data Science, Machine Learning, and Python logic structures with interactive experiences.",
   keywords: ["Sudip Seth", "Portfolio", "Data Science", "Machine Learning", "Python Developer", "AI Enthusiast"],
   authors: [{ name: "Sudip Seth" }],
   openGraph: {
-    title: "Sudip Seth | Future Data Scientist Portfolio",
+    title: "Sudip Seth | Frontend Developer Portfolio",
     description: "Explore the futuristic developer portfolio of Sudip Seth. Showcasing projects in Data Science, Machine Learning, and Python.",
     type: "website",
     locale: "en_US",

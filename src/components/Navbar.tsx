@@ -93,13 +93,6 @@ export default function Navbar() {
           <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-white/10 bg-white/5 px-1.5 font-mono text-[10px] font-medium text-slate-400">
             <span className="text-xs">⌘</span>K
           </kbd>
-          <a
-            href="#contact"
-            className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-500 px-4 py-2 text-xs font-semibold text-black transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)]"
-          >
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Hire Me</span>
-          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -124,13 +117,6 @@ export default function Navbar() {
               {item.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-6 w-full text-center rounded-full bg-gradient-to-r from-cyan-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-black hover:opacity-90 transition-all"
-          >
-            Hire Me
-          </a>
         </div>
       )}
     </nav>

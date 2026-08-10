@@ -7,10 +7,9 @@ import { GithubIcon, LinkedinIcon, InstagramIcon } from './icons';
 import Image from 'next/image';
 
 const roles = [
-  'Future Data Scientist 🚀',
-  'Python Developer 💻',
-  'AI Enthusiast 🤖',
+  'Frontend Developer 🚀',
   'ML Explorer 🧠',
+  'AI Enthusiast 🤖',
 ];
 
 export default function Hero() {
@@ -90,7 +89,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-6 max-w-xl text-base sm:text-lg text-slate-400 leading-relaxed"
           >
-            I design and build beginner-friendly tech applications, focusing on AI, Data Science, and Machine Learning. Eager to solve problems, develop logic, and push limits.
+            I am a 2nd-year B.Tech (CSE) student, know programming in C, Java, Python, and Eager to solve problems, develop logic, and push limits.
           </motion.p>
 
           {/* Call to Actions */}
